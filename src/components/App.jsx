@@ -3,8 +3,6 @@ import {Redirect, Route, Switch} from "react-router-dom"
 import PrivateRoute from "./PrivateRoute";
 import {Register } from "./login/register";
 import {Login} from "./login/login";
-import {useHistory} from "react-router-dom";
-
 
  function App(){
 

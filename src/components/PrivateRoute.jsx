@@ -40,7 +40,6 @@ export default function PrivateRoute( {...rest}){
             {...rest}
             setUserRole = {setUserRole}
         render = {props => {
-            console.log(userRole)
             return currentUser ?roleRoute[userRole]: <Redirect to = "/login"/>}
         }>    
         </Route>

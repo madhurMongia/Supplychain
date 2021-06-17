@@ -15,6 +15,10 @@ export function BlockProvider({children}){
     useEffect(() => {
          loadWeb3()
        loadBlockChainData()
+       window.ethereum.on('accountsChanged', function (accounts) {
+       setAccount(accounts[0])
+      })
+      return window.ethereum.off
     },[])
 
     async function loadWeb3() {
