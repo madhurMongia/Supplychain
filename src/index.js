@@ -4,14 +4,14 @@ import 'bootstrap/dist/css/bootstrap.css'
 import App from './components/App';
 import {AuthProvider} from "./components/contexts/authContext";
 import {BlockProvider} from "./components/contexts/blockContext";
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 
-ReactDOM.render( <BrowserRouter>
+ReactDOM.render( <HashRouter>
 <BlockProvider>
 <AuthProvider>
 <App />
 </AuthProvider>
 </BlockProvider>
-</BrowserRouter>,
+</HashRouter>,
      document.getElementById('root'));
 
