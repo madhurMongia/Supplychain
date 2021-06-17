@@ -20,7 +20,7 @@ export function RetDash(){
 
       const handlelogout = async (e) => {
         await logout().then((user) => {
-          history.push('./login')
+          history.push('/login')
       }
       )}
 
@@ -61,11 +61,11 @@ export function RetDash(){
               </Navbar.Toggle>
               <Navbar.Collapse>
               <Nav>
-              <Nav.Link href="/home/scanshipment" >Scan Shipment</Nav.Link>
-              <Nav.Link href="/home/trackproduct" >Track Product</Nav.Link>
+              <Nav.Link href="/#/home/scanshipment" >Scan Shipment</Nav.Link>
+              <Nav.Link href="/#/home/trackproduct" >Track Product</Nav.Link>
               <Nav.Link onClick = {handleOpen} >About</Nav.Link>
               < NavDropdown title = "Profile">
-                <NavDropdown.Item href="/home/profile">Update Profile</NavDropdown.Item>
+                <NavDropdown.Item href="/#/home/profile">Update Profile</NavDropdown.Item>
                 <NavDropdown.Item onClick = {handlelogout} >Logout</NavDropdown.Item>
             </NavDropdown>
               </Nav>

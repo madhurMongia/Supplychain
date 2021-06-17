@@ -100,7 +100,7 @@ export function Register(props) {
                 await signup(values.email,values.password).then(async (user) =>{
                     await writeData(values.Username,values.role,user.user.uid,values.address).then((user) => {
                         setOpen(true);
-                        history.push("/home")
+                        history.push("./home/trackproduct")
                     }).catch((error) =>{
                         setErr(error.message)
                     })
@@ -307,7 +307,7 @@ export function Register(props) {
                        </Grid>
 
                        <Grid container xs = {12} justify = "center">
-                       <Link href="/login" variant="body2" style = {{
+                       <Link href="#/login" variant="body2" style = {{
                            paddingTop: "20px",
                            color:"#EDF5E1",
                            fontSize:"16px"

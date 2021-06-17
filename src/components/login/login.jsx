@@ -89,7 +89,7 @@ export function Login() {
         try{
         await login(values.email,values.password)
              setErr(0) 
-            history.push("./home")
+            history.push("./home/trackproduct")
             setOpen(true)
         }
         catch(error){
@@ -207,7 +207,7 @@ export function Login() {
                    </Grid>
 
                    <Grid container xs = {12} justify = "center">
-                   <Link href="/signup" variant="body2" style = {{
+                   <Link href="/#/signup" variant="body2" style = {{
                        paddingTop: "20px",
                        color:"#EDF5E1",
                        fontSize:"16px"

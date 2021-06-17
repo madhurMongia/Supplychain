@@ -14,6 +14,7 @@ import {Login} from "./login/login";
         <Switch>
           {/*Dashboard*/}
           <Redirect path = "/" to = "/home" exact/>
+          <Redirect push path = "/home" to = "/home/trackproduct" exact/>
         <PrivateRoute path = "/home"/>
 
         {/*Auth Route*/}
