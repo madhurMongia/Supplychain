@@ -1,0 +1,28 @@
+/*colors scheme #05386B #379683 #5cdb95 #8ee4af #EDF5E1 */
+
+.nav-link{
+    color:#05386B !important;
+    font-weight:500;
+    font-size:18px;
+}
+.nav-link:hover{
+    color:#8ee4af !important;
+    background-color:#05386B;
+    border-radius: 3px;
+}
+
+.navbar-nav {
+    gap: 25px;
+}
+
+
+.dropdown-item:hover {
+    color:#8ee4af !important;
+    background-color:#05386B ;
+}
+
+
+.navbar{
+    background-color:#5cdb95 !important;
+    border-bottom:4px solid #05386B ;
+}
