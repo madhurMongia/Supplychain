@@ -1,6 +1,7 @@
 import React,{useContext, useEffect, useState } from "react";
 import Web3 from "web3";
 import supply from '../../abis/supplyChain.json'
+import {Instructions} from "./instructions";
 const blockContext  = React.createContext();
 
 
@@ -11,22 +12,27 @@ export function useBlock(){
 export function BlockProvider({children}){
     const [account , setAccount] = useState();
     const [supplyChain ,setsupplyChain] = useState();
+    const [isMetamask, setIsMetamask] = useState(false);
     const [web3,setWeb3] = useState();
     useEffect(() => {
          loadWeb3()
+         if(isMetamask){
        loadBlockChainData()
        window.ethereum.on('accountsChanged', function (accounts) {
        setAccount(accounts[0])
       })
       return window.ethereum.off
+    }
     },[])
 
     async function loadWeb3() {
         if (window.ethereum) {
+          setIsMetamask(true)
         window.web3 = new Web3(window.ethereum)
           await window.ethereum.enable()
         }
         else if (window.web3) {
+          setIsMetamask(true)
         window.web3 = new Web3(window.web3.currentProvider)
         }
         else {
@@ -41,6 +47,7 @@ export function BlockProvider({children}){
           const accounts = await web3.eth.getAccounts()
           setAccount(accounts[0])
           const networkId = await web3.eth.net.getId()
+          console.log(networkId)
           const networkData = supply.networks[networkId]
           const chain = await web3.eth.Contract(supply.abi,networkData.address,{ transactionConfirmationBlocks: 1,gasPrice :200000000000})
             setsupplyChain(chain)
@@ -80,7 +87,7 @@ export function BlockProvider({children}){
       }
       return(
           <blockContext.Provider value = {value}>
-              {children}
+              {isMetamask?children: <Instructions/>}
           </blockContext.Provider>
       ) 
 }
