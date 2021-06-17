@@ -6,7 +6,7 @@ import {AuthProvider} from "./components/contexts/authContext";
 import {BlockProvider} from "./components/contexts/blockContext";
 import {HashRouter} from "react-router-dom";
 
-ReactDOM.render( <HashRouter basename = "/SupplyChain">
+ReactDOM.render( <HashRouter>
 <BlockProvider>
 <AuthProvider>
 <App />
