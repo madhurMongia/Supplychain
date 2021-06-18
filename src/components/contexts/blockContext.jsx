@@ -13,6 +13,7 @@ export function useBlock(){
 export function BlockProvider({children}){
     const [account , setAccount] = useState();
     const [supplyChain ,setsupplyChain] = useState();
+    const [isMetamask, setIsMetamask] = useState(false);
     const [web3,setWeb3] = useState();
     const history = useHistory();
     useEffect(() => {
@@ -28,10 +29,12 @@ export function BlockProvider({children}){
 
     async function loadWeb3() {
         if (window.ethereum) {
+          setIsMetamask(true)
         window.web3 = new Web3(window.ethereum)
           await window.ethereum.enable()
         }
         else if (window.web3) {
+          setIsMetamask(true)
         window.web3 = new Web3(window.web3.currentProvider)
         }
         else {
@@ -48,6 +51,7 @@ export function BlockProvider({children}){
           const accounts = await web3.eth.getAccounts()
           setAccount(accounts[0])
           const networkId = await web3.eth.net.getId()
+          console.log(networkId)
           const networkData = supply.networks[networkId]
           const chain = await new web3.eth.Contract(supply.abi,networkData.address,{ transactionConfirmationBlocks: 1,gasPrice :200000000000})
             setsupplyChain(chain)
