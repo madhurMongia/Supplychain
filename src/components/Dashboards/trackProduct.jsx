@@ -134,7 +134,7 @@ export function TrackProduct(){
     const [owner,setOwner] = useState();
     const [err,setErr] = useState(false);
     const [openErr,setOpenErr] = useState(false);
-    const [locations,setLocations] = useState(["Please Enter Product ID"]);
+    const [locations,setLocations] = useState(["Enter Product ID first"]);
     const qrRef = useRef(5);
 
     async function handleScan(){
@@ -142,7 +142,9 @@ export function TrackProduct(){
     }
     async function handleFetchInfo(id){
         try {
-            console.log(id)
+            if(!id){
+                throw("Please enter Product ID")
+            }
             const dataRaw = await trackProduct(id)
             const Address = await fetchOwner(id)
             const Locations = await fetchLocations(id)

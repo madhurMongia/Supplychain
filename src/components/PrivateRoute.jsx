@@ -38,9 +38,10 @@ export default function PrivateRoute( {...rest}){
     return (
         <Route
             {...rest}
-            setUserRole = {setUserRole}
         render = {props => {
+            if(window.ethereum){
             return currentUser ?roleRoute[userRole]: <Redirect to = "/login"/>}
+        }
         }>    
         </Route>
     )

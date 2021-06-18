@@ -14,7 +14,6 @@ import {Nav ,Navbar , NavDropdown,Container} from "react-bootstrap";
 export function ManuDash(props){
 
     const [icon, setIcon] = useState(true);
-    const [Bdr,setBdr] = useState(true);
     const [open,setOpen] = useState(false);
     const {logout} = useAuth();
     const history = useHistory();
@@ -31,19 +30,13 @@ export function ManuDash(props){
     }
 
     return(<div style = {{
-      position:"absolute",
-        top:"0",
-        left:"0",
-        bottom:"0",
-        right:"0",
-        height:"100vh",
-        width:"100%",
+      height:"100vh",
         backgroundColor:"#5cdb95"
     }}>
             <Navbar expand ="lg" style = {{
               background: "#8ee4af",
               overflow:"visible",
-              borderBottom: Bdr?"4px solid #05386B":"none",
+              borderBottom:"4px solid #05386B",
             }} sticky = "top">
               <Navbar.Brand style = {{
                 marginLeft: "50px",
@@ -58,7 +51,7 @@ export function ManuDash(props){
                 border:"none",
                 color: "#05386B",
                 fontSize:"25px"
-              }}  onClick = {() => {setIcon(prev => !prev);setBdr(prev => !prev)}}>
+              }}  onClick = {() => {setIcon(prev => !prev)}}>
                 <i class = {icon?"fa fa-bars":"fa fa-times"} ></i>
               </Navbar.Toggle>
               <Navbar.Collapse>
@@ -73,7 +66,7 @@ export function ManuDash(props){
               </Nav>
               </Navbar.Collapse>
             </Navbar>
-            <Container component="main" fluid>
+            <Container component="main">
                 <Route path = "/home/profile" component = {UpdateProfile}></Route>
                 <Route path = "/home/trackproduct" component = {TrackProduct}></Route>
                 <Route path = "/home/addproduct" component = {AddProduct}></Route>

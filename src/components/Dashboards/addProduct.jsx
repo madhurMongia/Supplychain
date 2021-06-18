@@ -423,8 +423,9 @@ export function AddProduct(){
 
     const handleClickOpen = async () => {
       const prod = await productCount()
-         setPc(prod.toNumber());
-    const response = await QRCode.toDataURL(prod.toNumber().toString(),{
+         setPc(prod);
+         console.log(prod)
+    const response = await QRCode.toDataURL(prod.toString(),{
       color:{
         dark: "#05386B",
         light: "#EDF5E1"
@@ -450,7 +451,7 @@ export function AddProduct(){
         justifyContent:"center",
         padding:"30px",
         display:"flex",
-        marginTop:"250px"
+        marginTop:"200px"
        }}>
            <Paper style = {{
                 padding:"25px",

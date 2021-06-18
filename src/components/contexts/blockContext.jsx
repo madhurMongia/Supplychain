@@ -1,6 +1,8 @@
 import React,{useContext, useEffect, useState } from "react";
 import Web3 from "web3";
 import supply from '../../abis/supplyChain.json'
+import {Redirect ,useHistory} from "react-router-dom"
+
 const blockContext  = React.createContext();
 
 
@@ -12,13 +14,16 @@ export function BlockProvider({children}){
     const [account , setAccount] = useState();
     const [supplyChain ,setsupplyChain] = useState();
     const [web3,setWeb3] = useState();
+    const history = useHistory();
     useEffect(() => {
          loadWeb3()
+         if(window.ethereum){
        loadBlockChainData()
        window.ethereum.on('accountsChanged', function (accounts) {
        setAccount(accounts[0])
       })
       return window.ethereum.off
+    }
     },[])
 
     async function loadWeb3() {
@@ -30,7 +35,9 @@ export function BlockProvider({children}){
         window.web3 = new Web3(window.web3.currentProvider)
         }
         else {
-          window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+          history.push("/instructions")
+          window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+          
         }
       }
 
@@ -42,8 +49,9 @@ export function BlockProvider({children}){
           setAccount(accounts[0])
           const networkId = await web3.eth.net.getId()
           const networkData = supply.networks[networkId]
-          const chain = await web3.eth.Contract(supply.abi,networkData.address,{ transactionConfirmationBlocks: 1,gasPrice :200000000000})
+          const chain = await new web3.eth.Contract(supply.abi,networkData.address,{ transactionConfirmationBlocks: 1,gasPrice :200000000000})
             setsupplyChain(chain)
+            console.log(chain)
       }
 
       function addProduct(name){
@@ -80,7 +88,7 @@ export function BlockProvider({children}){
       }
       return(
           <blockContext.Provider value = {value}>
-              {children}
+            {children}
           </blockContext.Provider>
       ) 
 }

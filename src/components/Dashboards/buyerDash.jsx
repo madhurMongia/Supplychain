@@ -12,7 +12,6 @@ export function BuyerDash(){
 
     const [icon, setIcon] = useState(true);
     const [open,setOpen] = useState(false);
-    const [Bdr,setBdr] = useState(true);
     const {logout} = useAuth();
     const history = useHistory();
       const handlelogout = async (e) => {
@@ -39,7 +38,7 @@ export function BuyerDash(){
             <Navbar expand ="lg" style = {{
               background: "#8ee4af",
               overflow:"visible",
-              borderBottom: Bdr?"4px solid #05386B":"none",
+              borderBottom:"4px solid #05386B",
             }} sticky = "top">
               <Navbar.Brand style = {{
                 marginLeft: "50px",
@@ -54,7 +53,7 @@ export function BuyerDash(){
                 border:"none",
                 color: "#05386B",
                 fontSize:"25px"
-              }}  onClick = {() => {setIcon(prev => !prev);setBdr(prev => !prev)}}>
+              }}  onClick = {() => {setIcon(prev => !prev)}}>
                 <i class = {icon?"fa fa-bars":"fa fa-times"} ></i>
               </Navbar.Toggle>
               <Navbar.Collapse>
