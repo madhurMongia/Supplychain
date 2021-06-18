@@ -34,7 +34,7 @@ export default function PrivateRoute( {...rest}){
 
     React.useEffect(()=>{
         fetchRole()
-    },[currentUser])
+    },[currentUser,userRole])
     return (
         <Route
             {...rest}
