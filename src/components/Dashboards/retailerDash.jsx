@@ -13,8 +13,7 @@ import {Nav ,Navbar , NavDropdown,Container} from "react-bootstrap";
 export function RetDash(){
 
     const [open,setOpen] = useState(false);
-    const [icon, setIcon] = useState(true);
-    const [Bdr,setBdr] = useState(true);
+  const [icon, setIcon] = useState(true);
     const {logout} = useAuth();
     const history = useHistory();
 
@@ -34,14 +33,14 @@ export function RetDash(){
         left:"0",
         bottom:"0",
         right:"0",
-        height:"120%",
+      height: "100%",
         width:"100%",
         backgroundColor:"#5cdb95"
     }}>
             <Navbar expand ="lg" style = {{
               background: "#8ee4af",
               overflow:"visible",
-              borderBottom: Bdr?"4px solid #05386B":"none",
+        borderBottom: "4px solid #05386B",
             }} sticky = "top">
               <Navbar.Brand style = {{
                 marginLeft: "50px",
@@ -56,7 +55,7 @@ export function RetDash(){
                 border:"none",
                 color: "#05386B",
                 fontSize:"25px"
-              }}  onClick = {() => {setIcon(prev => !prev);setBdr(prev => !prev)}}>
+        }} onClick={() => { setIcon(prev => !prev) }}>
                 <i class = {icon?"fa fa-bars":"fa fa-times"} ></i>
               </Navbar.Toggle>
               <Navbar.Collapse>
