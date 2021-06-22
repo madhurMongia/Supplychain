@@ -39,7 +39,7 @@ export function BuyerDash(){
               background: "#8ee4af",
               overflow:"visible",
               borderBottom:"4px solid #05386B",
-            }} sticky = "top">
+      }} sticky="top" collapseOnSelect>
               <Navbar.Brand style = {{
                 marginLeft: "50px",
                 color:"#05386B",
@@ -57,7 +57,7 @@ export function BuyerDash(){
                 <i class = {icon?"fa fa-bars":"fa fa-times"} ></i>
               </Navbar.Toggle>
               <Navbar.Collapse>
-              <Nav>
+          <Nav onSelect={() => setIcon(prev => !prev)}>
               <Nav.Link href="./#/home/trackproduct" >Track Product</Nav.Link>
               <Nav.Link onClick = {handleOpen}>About</Nav.Link>
               < NavDropdown title = "Profile">
