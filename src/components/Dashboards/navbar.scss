@@ -26,3 +26,13 @@
     background-color:#5cdb95 !important;
     border-bottom:4px solid #05386B ;
 }
+
+body::-webkit-scrollbar{
+    width:0.5rem;
+  }
+  body::-webkit-scrollbar-track{
+    background:#05386B;
+  }
+  body::-webkit-scrollbar-thumb{
+    background:#EDF5E1;
+  }
