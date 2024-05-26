@@ -50,10 +50,8 @@ export function BlockProvider({children}){
           setWeb3(web3)
           const accounts = await web3.eth.getAccounts()
           setAccount(accounts[0])
-          const networkId = await web3.eth.net.getId()
-          const chain = await new web3.eth.Contract(supply.abi,process.env.CONTRACT_ADDRESS)
+          const chain = await new web3.eth.Contract(supply,process.env.REACT_APP_CONTRACT_ADDRESS,{gasPrice :200000000000})
             setsupplyChain(chain)
-            console.log(chain)
       }
 
       function addProduct(name){

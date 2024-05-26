@@ -27,6 +27,7 @@ export default function PrivateRoute( {...rest}){
         if(currentUser){
         await database.ref("users/" + currentUser.uid).child("role").get().then(snapshot =>{
             if(snapshot.exists()){
+                console.log(snapshot.val())
             setUserRole(snapshot.val())}
     })
 }
