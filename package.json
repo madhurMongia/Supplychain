@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "supply chain managment application",
   "author": "Madhur Mongia",
-  "homepage": "http://madhurMongia.github.io/Supplychain",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
