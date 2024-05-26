@@ -1,7 +1,7 @@
 import React,{useContext, useEffect, useState } from "react";
 import Web3 from "web3";
 import supply from '../../abis/supplyChain.json'
-import {Redirect ,useHistory} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 
 const blockContext  = React.createContext();
 
@@ -51,9 +51,7 @@ export function BlockProvider({children}){
           const accounts = await web3.eth.getAccounts()
           setAccount(accounts[0])
           const networkId = await web3.eth.net.getId()
-          console.log(networkId)
-          const networkData = supply.networks[networkId]
-          const chain = await new web3.eth.Contract(supply.abi,networkData.address,{ transactionConfirmationBlocks: 1,gasPrice :200000000000})
+          const chain = await new web3.eth.Contract(supply.abi,process.env.CONTRACT_ADDRESS)
             setsupplyChain(chain)
             console.log(chain)
       }
